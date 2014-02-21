@@ -1,0 +1,35 @@
+#!/usr/bin/env ruby
+
+if ARGV.length < 2
+  puts "Usage:"
+  puts "  rage quit <process_name>"
+  exit
+end
+
+def flip text
+  chars   = " -_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
+  flipped = " -_ɐqɔpǝɟɓɥıɾʞlɯuodbɹsʇnʌʍxʎz∀𐐒ƆᗡƎℲ⅁HIſ⋊⅂WNOԀΌᴚS⊥∩ΛMX⅄Z1234597860"
+
+  flipped_string = ""
+  text.scan(/./).each do |char|
+    flipped_index = chars.index(char)
+
+    if flipped_index.nil?
+      flipped_string << "char"
+    else
+      flipped_string << flipped[flipped_index]
+    end
+  end
+
+  flipped_string
+end
+
+process_name = ARGV[1]
+
+system "killall -9 #{process_name}"
+
+if $? == 0
+  puts "(╯°□°）╯︵ #{flip(process_name)}"
+else
+  puts '(ಥ﹏ಥ)'
+end
