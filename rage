@@ -15,7 +15,7 @@ def flip text
     flipped_index = chars.index(char)
 
     if flipped_index.nil?
-      flipped_string << "char"
+      flipped_string << char
     else
       flipped_string << flipped[flipped_index]
     end
